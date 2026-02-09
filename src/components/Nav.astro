@@ -1,0 +1,37 @@
+---
+const { currentPath = '/' } = Astro.props;
+
+const links = [
+  { href: '/', label: 'Home' },
+  { href: '/about', label: 'About' },
+  { href: '/services', label: 'Services' },
+  { href: '/pricing', label: 'Pricing' },
+  { href: '/contact', label: 'Contact' },
+];
+---
+
+<nav class="mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-5">
+  <a href="/" class="text-xl font-black tracking-tight text-white">Codestri</a>
+
+  <ul class="flex items-center gap-2 rounded-full border border-white/10 bg-black/20 p-1 backdrop-blur-sm">
+    {links.map((link) => {
+      const isActive = currentPath === link.href;
+      return (
+        <li>
+          <a
+            href={link.href}
+            class:list={[
+              'rounded-full px-4 py-2 text-sm font-bold transition',
+              isActive
+                ? 'bg-violet-400 text-black'
+                : 'text-slate-300 hover:bg-white/10 hover:text-white',
+            ]}
+            aria-current={isActive ? 'page' : undefined}
+          >
+            {link.label}
+          </a>
+        </li>
+      );
+    })}
+  </ul>
+</nav>

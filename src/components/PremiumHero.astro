@@ -1,0 +1,116 @@
+<section
+  class="hero-reactive relative flex min-h-[70vh] items-center justify-center overflow-hidden rounded-3xl border border-white/10 bg-slate-950/45 px-6 py-20 text-center backdrop-blur-sm"
+  data-hero
+>
+  <div class="pointer-events-none absolute inset-0" aria-hidden="true">
+    <div class="hero-glow absolute inset-0"></div>
+  </div>
+
+  <div class="relative z-10 mx-auto max-w-3xl">
+    <h1 class="text-5xl font-black leading-tight tracking-tight md:text-7xl">Build once. Stand out forever.</h1>
+    <p class="mx-auto mt-6 max-w-2xl text-lg text-slate-300 md:text-xl">
+      High-performance websites designed to last — no subscriptions, no lock-in.
+    </p>
+
+    <div class="mt-10 flex justify-center">
+      <a
+        href="/services"
+        class="magnetic-cta inline-flex items-center justify-center rounded-xl border border-violet-300/35 bg-violet-400/90 px-7 py-3 text-sm font-extrabold tracking-wide text-black shadow-[0_8px_30px_rgba(139,92,246,0.24)] transition duration-300 hover:bg-violet-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-300/70"
+        data-magnetic
+      >
+        View Examples
+      </a>
+    </div>
+  </div>
+</section>
+
+<script>
+  const hero = document.querySelector('[data-hero]');
+  if (hero) {
+    const isCoarse = window.matchMedia('(pointer: coarse)').matches;
+    if (!isCoarse) {
+      let targetX = 50;
+      let targetY = 40;
+      let currentX = 50;
+      let currentY = 40;
+      let rafId = 0;
+
+      const render = () => {
+        currentX += (targetX - currentX) * 0.12;
+        currentY += (targetY - currentY) * 0.12;
+        hero.style.setProperty('--mx', `${currentX.toFixed(2)}%`);
+        hero.style.setProperty('--my', `${currentY.toFixed(2)}%`);
+        rafId = requestAnimationFrame(render);
+      };
+
+      hero.addEventListener('mousemove', (event) => {
+        const rect = hero.getBoundingClientRect();
+        targetX = ((event.clientX - rect.left) / rect.width) * 100;
+        targetY = ((event.clientY - rect.top) / rect.height) * 100;
+      });
+
+      hero.addEventListener('mouseleave', () => {
+        targetX = 50;
+        targetY = 40;
+      });
+
+      rafId = requestAnimationFrame(render);
+
+      const button = hero.querySelector('[data-magnetic]');
+      if (button) {
+        let bx = 0;
+        let by = 0;
+
+        button.addEventListener('mousemove', (event) => {
+          const rect = button.getBoundingClientRect();
+          const x = event.clientX - (rect.left + rect.width / 2);
+          const y = event.clientY - (rect.top + rect.height / 2);
+          const strength = 0.18;
+          bx = Math.max(-10, Math.min(10, x * strength));
+          by = Math.max(-8, Math.min(8, y * strength));
+          button.style.transform = `translate3d(${bx.toFixed(1)}px, ${by.toFixed(1)}px, 0)`;
+          button.style.boxShadow = '0 10px 34px rgba(139,92,246,0.34)';
+        });
+
+        button.addEventListener('mouseleave', () => {
+          bx = 0;
+          by = 0;
+          button.style.transform = 'translate3d(0, 0, 0)';
+          button.style.boxShadow = '0 8px 30px rgba(139,92,246,0.24)';
+        });
+      }
+
+      window.addEventListener('beforeunload', () => cancelAnimationFrame(rafId), { once: true });
+    }
+  }
+</script>
+
+<style>
+  .hero-reactive {
+    --mx: 50%;
+    --my: 40%;
+  }
+
+  .hero-glow {
+    background:
+      radial-gradient(
+        520px circle at var(--mx) var(--my),
+        rgba(167, 139, 250, 0.2),
+        rgba(99, 102, 241, 0.12) 34%,
+        transparent 62%
+      ),
+      linear-gradient(140deg, rgba(17, 24, 39, 0.62), rgba(6, 8, 20, 0.85));
+    transition: opacity 300ms ease;
+  }
+
+  .magnetic-cta {
+    will-change: transform, box-shadow;
+  }
+
+  @media (pointer: coarse) {
+    .hero-reactive {
+      --mx: 50%;
+      --my: 35%;
+    }
+  }
+</style>

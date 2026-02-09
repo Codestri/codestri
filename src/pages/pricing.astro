@@ -1,0 +1,18 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PricingTable from '../components/PricingTable.astro';
+---
+
+<Layout title="Pricing | Codestri">
+  <section class="py-14">
+    <p class="text-sm font-bold uppercase tracking-[0.2em] text-violet-300">Pricing</p>
+    <h1 class="mt-3 text-5xl font-black">Choose your build velocity.</h1>
+    <p class="mt-6 max-w-3xl text-lg text-slate-300">
+      Three simple tiers. Start free, launch fast, or scale with a full sprint. All options keep the dark, performance-first Codestri foundation.
+    </p>
+
+    <div class="mt-10">
+      <PricingTable />
+    </div>
+  </section>
+</Layout>
