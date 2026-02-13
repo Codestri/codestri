@@ -1,70 +1,80 @@
 ---
-const horizontal = Array.from({ length: 22 }, (_, i) => i);
-const vertical = Array.from({ length: 34 }, (_, i) => i);
+const bands = [
+  { y: 330, amp: 62, opacity: 0.52 },
+  { y: 365, amp: 54, opacity: 0.46 },
+  { y: 400, amp: 46, opacity: 0.4 },
+  { y: 435, amp: 38, opacity: 0.34 },
+  { y: 470, amp: 32, opacity: 0.3 },
+  { y: 505, amp: 26, opacity: 0.26 },
+  { y: 540, amp: 22, opacity: 0.22 },
+  { y: 575, amp: 18, opacity: 0.2 },
+];
 
-const waveY = (x: number, row: number) => {
-  const base = 160 + row * 22;
-  const ampA = 26 + (row % 5) * 2;
-  const ampB = 10 + (row % 3) * 2;
-  return (
-    base +
-    Math.sin((x / 170) + row * 0.34) * ampA +
-    Math.cos((x / 95) + row * 0.19) * ampB
-  );
-};
-
-const waveX = (y: number, col: number) => {
-  const base = 60 + col * 40;
-  const ampA = 18 + (col % 4) * 2;
-  const ampB = 8 + (col % 3) * 2;
-  return (
-    base +
-    Math.sin((y / 160) + col * 0.27) * ampA +
-    Math.cos((y / 120) + col * 0.17) * ampB
-  );
-};
-
-const horizontalPaths = horizontal.map((row) => {
-  const points = Array.from({ length: 52 }, (_, i) => {
-    const x = -80 + i * 34;
-    const y = waveY(x, row);
+const makePath = (baseY: number, amp: number, phase = 0) => {
+  const points = Array.from({ length: 70 }, (_, i) => {
+    const x = -40 + i * 22;
+    const y =
+      baseY +
+      Math.sin((x / 170) + phase) * amp +
+      Math.cos((x / 320) - phase * 0.7) * (amp * 0.28);
     return `${x},${y.toFixed(2)}`;
   });
   return points.join(' ');
-});
+};
 
-const verticalPaths = vertical.map((col) => {
-  const points = Array.from({ length: 38 }, (_, i) => {
-    const y = 80 + i * 24;
-    const x = waveX(y, col);
-    return `${x.toFixed(2)},${y}`;
-  });
-  return points.join(' ');
-});
+const ribbonA = bands.map((b, i) => ({
+  points: makePath(b.y, b.amp, i * 0.24),
+  opacity: b.opacity,
+}));
+
+const ribbonB = bands.map((b, i) => ({
+  points: makePath(b.y + 8, b.amp * 0.92, 0.7 + i * 0.22),
+  opacity: b.opacity * 0.7,
+}));
 ---
 
 <div class="mesh-aurora" aria-hidden="true">
   <svg class="mesh-aurora__svg" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice">
     <defs>
-      <linearGradient id="meshStrokeA" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stop-color="#8bd5ff" stop-opacity="0.62" />
-        <stop offset="55%" stop-color="#67e8f9" stop-opacity="0.58" />
-        <stop offset="100%" stop-color="#a78bfa" stop-opacity="0.5" />
+      <linearGradient id="ribbonStrokeA" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#7dd3fc" stop-opacity="0.15" />
+        <stop offset="30%" stop-color="#38bdf8" stop-opacity="0.75" />
+        <stop offset="65%" stop-color="#67e8f9" stop-opacity="0.85" />
+        <stop offset="100%" stop-color="#a78bfa" stop-opacity="0.25" />
       </linearGradient>
-      <filter id="meshGlow" x="-20%" y="-20%" width="140%" height="140%">
-        <feGaussianBlur stdDeviation="0.55" />
+      <linearGradient id="ribbonStrokeB" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#93c5fd" stop-opacity="0.1" />
+        <stop offset="50%" stop-color="#22d3ee" stop-opacity="0.55" />
+        <stop offset="100%" stop-color="#c4b5fd" stop-opacity="0.16" />
+      </linearGradient>
+      <filter id="ribbonGlow" x="-20%" y="-20%" width="140%" height="140%">
+        <feGaussianBlur stdDeviation="0.6" />
       </filter>
     </defs>
 
-    <g class="mesh-layer mesh-layer--h" filter="url(#meshGlow)">
-      {horizontalPaths.map((d) => (
-        <polyline points={d} fill="none" stroke="url(#meshStrokeA)" stroke-width="0.65" stroke-linecap="round" stroke-opacity="0.82" />
+    <g class="ribbon ribbon--a" filter="url(#ribbonGlow)">
+      {ribbonA.map((line) => (
+        <polyline
+          points={line.points}
+          fill="none"
+          stroke="url(#ribbonStrokeA)"
+          stroke-width="0.95"
+          stroke-linecap="round"
+          stroke-opacity={line.opacity}
+        />
       ))}
     </g>
 
-    <g class="mesh-layer mesh-layer--v" filter="url(#meshGlow)">
-      {verticalPaths.map((d) => (
-        <polyline points={d} fill="none" stroke="url(#meshStrokeA)" stroke-width="0.45" stroke-linecap="round" stroke-opacity="0.45" />
+    <g class="ribbon ribbon--b" filter="url(#ribbonGlow)">
+      {ribbonB.map((line) => (
+        <polyline
+          points={line.points}
+          fill="none"
+          stroke="url(#ribbonStrokeB)"
+          stroke-width="0.75"
+          stroke-linecap="round"
+          stroke-opacity={line.opacity}
+        />
       ))}
     </g>
   </svg>
@@ -77,41 +87,41 @@ const verticalPaths = vertical.map((col) => {
     z-index: 1;
     pointer-events: none;
     overflow: hidden;
-    opacity: 0.78;
+    opacity: 0.88;
     mix-blend-mode: screen;
   }
 
   .mesh-aurora__svg {
-    width: 122%;
-    height: 122%;
-    transform: translate(-9%, -8%);
+    width: 120%;
+    height: 120%;
+    transform: translate(-7%, -6%);
   }
 
-  .mesh-layer {
+  .ribbon {
     transform-origin: center;
   }
 
-  .mesh-layer--h {
-    animation: meshWaveH 14s ease-in-out infinite alternate;
+  .ribbon--a {
+    animation: ribbonFlowA 11s ease-in-out infinite alternate;
   }
 
-  .mesh-layer--v {
-    animation: meshWaveV 18s ease-in-out infinite alternate;
+  .ribbon--b {
+    animation: ribbonFlowB 15s ease-in-out infinite alternate;
   }
 
-  @keyframes meshWaveH {
-    0% { transform: translate3d(-16px, -10px, 0) scale(1.01); }
-    100% { transform: translate3d(20px, 10px, 0) scale(1.04); }
+  @keyframes ribbonFlowA {
+    0% { transform: translate3d(-18px, -10px, 0) scale(1.01); }
+    100% { transform: translate3d(24px, 12px, 0) scale(1.04); }
   }
 
-  @keyframes meshWaveV {
-    0% { transform: translate3d(12px, 14px, 0) scale(1.02); }
-    100% { transform: translate3d(-16px, -10px, 0) scale(1.04); }
+  @keyframes ribbonFlowB {
+    0% { transform: translate3d(16px, 10px, 0) scale(1.02); }
+    100% { transform: translate3d(-20px, -12px, 0) scale(1.04); }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .mesh-layer--h,
-    .mesh-layer--v {
+    .ribbon--a,
+    .ribbon--b {
       animation: none !important;
     }
   }
