@@ -17,62 +17,46 @@ body {
 .site-shell::before {
   content: '';
   position: fixed;
-  inset: -25%;
+  inset: -22%;
   z-index: 0;
   pointer-events: none;
   background:
-    linear-gradient(120deg, rgba(34, 211, 238, 0.15) 0%, transparent 30%),
-    linear-gradient(240deg, rgba(167, 139, 250, 0.18) 5%, transparent 38%),
-    linear-gradient(160deg, rgba(56, 189, 248, 0.14) 15%, transparent 44%),
-    linear-gradient(135deg, #02030a 6%, #071126 34%, #10163a 56%, #070a18 82%, #02030a 100%);
-  background-size: 160% 160%, 170% 170%, 180% 180%, 100% 100%;
-  filter: saturate(118%) contrast(108%);
-  animation: mesh-drift 22s ease-in-out infinite alternate;
+    radial-gradient(circle at 12% 20%, rgba(34, 211, 238, 0.16), transparent 35%),
+    radial-gradient(circle at 82% 18%, rgba(167, 139, 250, 0.2), transparent 36%),
+    radial-gradient(circle at 52% 84%, rgba(56, 189, 248, 0.14), transparent 34%),
+    linear-gradient(140deg, #02030a 8%, #070f22 36%, #11183d 56%, #070b19 82%, #02030a 100%);
+  background-size: 145% 145%;
+  filter: saturate(112%);
+  animation: bg-drift 26s ease-in-out infinite alternate;
 }
 
 .site-shell::after {
   content: '';
   position: fixed;
-  inset: -10% -15% -10% -15%;
+  inset: 0;
   z-index: 1;
   pointer-events: none;
-  opacity: 0.14;
-  background:
-    linear-gradient(
-      105deg,
-      transparent 0%,
-      rgba(255, 255, 255, 0.04) 45%,
-      transparent 60%
-    );
+  opacity: 0.1;
+  background: linear-gradient(110deg, transparent 0%, rgba(255, 255, 255, 0.06) 46%, transparent 56%);
   filter: blur(14px);
-  animation: mesh-wave 12s ease-in-out infinite;
+  animation: sheen 12s ease-in-out infinite;
 }
 
-@keyframes mesh-drift {
+@keyframes bg-drift {
   0% {
-    transform: translate3d(-2%, -1%, 0) scale(1.02);
-    background-position: 0% 40%, 100% 60%, 50% 50%, 50% 50%;
-  }
-  50% {
-    transform: translate3d(2%, 1.5%, 0) scale(1.06);
-    background-position: 100% 55%, 0% 45%, 60% 40%, 50% 50%;
+    transform: translate3d(-1.5%, -1%, 0) scale(1.02);
+    background-position: 0% 45%;
   }
   100% {
-    transform: translate3d(-1%, 1%, 0) scale(1.03);
-    background-position: 20% 70%, 80% 30%, 40% 60%, 50% 50%;
+    transform: translate3d(1.8%, 1%, 0) scale(1.05);
+    background-position: 100% 55%;
   }
 }
 
-@keyframes mesh-wave {
-  0% {
-    transform: translate3d(-1.5%, 0, 0) rotate(0deg);
-  }
-  50% {
-    transform: translate3d(1.5%, -1%, 0) rotate(1deg);
-  }
-  100% {
-    transform: translate3d(-1%, 0.8%, 0) rotate(-1deg);
-  }
+@keyframes sheen {
+  0% { transform: translate3d(-1.2%, 0, 0); }
+  50% { transform: translate3d(1.2%, -0.8%, 0); }
+  100% { transform: translate3d(-1.2%, 0, 0); }
 }
 
 .glass-card {
