@@ -1,23 +1,56 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import SectionLead from '../components/SectionLead.astro';
+import Checklist from '../components/Checklist.astro';
+import PageSection from '../components/PageSection.astro';
+
+const contactPoints = [
+  'Project goals and timeline',
+  'Current site friction points',
+  'Design and content expectations',
+];
+
+const engagementPaths = [
+  'Single-scope polish sprint',
+  'Full multi-page rebuild',
+  'Ongoing optimization support',
+];
 ---
 
 <Layout title="Contact | Codestri">
-  <section class="py-14">
-    <p class="text-sm font-bold uppercase tracking-[0.2em] text-violet-300">Contact</p>
-    <h1 class="mt-3 text-5xl font-black">Let’s build your next version.</h1>
-    <p class="mt-6 max-w-2xl text-lg text-slate-300">
-      Tell us what you’re building and what’s not working right now. We’ll propose a clear, practical path forward.
-    </p>
+  <PageSection>
+    <SectionLead
+      eyebrow="Contact"
+      title="Let’s shape your next high-quality release."
+      description="Share your goals and constraints, and we’ll propose a practical, premium path forward."
+      maxWidth="max-w-2xl"
+    />
 
-    <div class="mt-10 max-w-2xl rounded-2xl border border-white/10 bg-black/25 p-6">
-      <p class="text-slate-300">Email us directly:</p>
-      <a
-        href="mailto:contact@codestri.com"
-        class="mt-3 inline-block rounded-lg bg-violet-400 px-5 py-3 text-sm font-bold text-black transition hover:bg-violet-300"
-      >
-        contact@codestri.com
-      </a>
+    <div class="mt-10 grid gap-6 md:grid-cols-[1.3fr_1fr]">
+      <article class="rounded-2xl border border-white/10 bg-black/25 p-6 backdrop-blur-sm">
+        <p class="text-sm font-semibold uppercase tracking-wider text-slate-400">What to include</p>
+        <div class="mt-4">
+          <Checklist items={contactPoints} />
+        </div>
+      </article>
+
+      <article class="rounded-2xl border border-violet-300/25 bg-gradient-to-b from-violet-500/10 to-black/30 p-6 backdrop-blur-sm">
+        <p class="text-sm font-semibold uppercase tracking-wider text-slate-400">Email</p>
+        <a
+          href="mailto:contact@codestri.com"
+          class="mt-4 inline-flex rounded-lg bg-violet-400 px-5 py-3 text-sm font-bold text-black transition hover:bg-violet-300"
+        >
+          contact@codestri.com
+        </a>
+        <p class="mt-4 text-sm text-slate-400">Typical response window: within one business day.</p>
+      </article>
     </div>
-  </section>
+
+    <div class="mt-6 rounded-2xl border border-white/10 bg-black/20 p-6 backdrop-blur-sm">
+      <p class="text-sm font-semibold uppercase tracking-wider text-slate-400">Common engagement paths</p>
+      <div class="mt-3">
+        <Checklist items={engagementPaths} />
+      </div>
+    </div>
+  </PageSection>
 </Layout>

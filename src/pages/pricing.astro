@@ -1,18 +1,45 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import SectionLead from '../components/SectionLead.astro';
 import PricingTable from '../components/PricingTable.astro';
+import FinalCta from '../components/FinalCta.astro';
+import PageSection from '../components/PageSection.astro';
+import InfoAccordion from '../components/InfoAccordion.astro';
+
+const pricingFaq = [
+  {
+    question: 'Can we start small and expand later?',
+    answer: 'Yes. Most teams start with a focused scope, then add pages or optimization cycles once early results are clear.',
+  },
+  {
+    question: 'Do these tiers lock us into one format?',
+    answer: 'No. They are planning anchors, not rigid boxes. Scope is adjusted to your constraints and outcomes.',
+  },
+  {
+    question: 'Is ongoing support available after launch?',
+    answer: 'Absolutely. Iteration support can be added for content refinement, performance tuning, and UX improvements.',
+  },
+];
 ---
 
 <Layout title="Pricing | Codestri">
-  <section class="py-14">
-    <p class="text-sm font-bold uppercase tracking-[0.2em] text-violet-300">Pricing</p>
-    <h1 class="mt-3 text-5xl font-black">Choose your build velocity.</h1>
-    <p class="mt-6 max-w-3xl text-lg text-slate-300">
-      Three simple tiers. Start free, launch fast, or scale with a full sprint. All options keep the dark, performance-first Codestri foundation.
-    </p>
+  <PageSection>
+    <SectionLead
+      eyebrow="Pricing"
+      title="Flexible paths for different build stages."
+      description="Start lean, ship confidently, and scale with a premium front-end foundation built for long-term clarity."
+    />
 
     <div class="mt-10">
       <PricingTable />
     </div>
-  </section>
+
+    <InfoAccordion title="Pricing notes" items={pricingFaq} />
+
+    <FinalCta
+      title="Not sure which tier fits best?"
+      description="Share your current stage and goals — we’ll recommend the most practical option."
+      actionLabel="Talk Through Options"
+    />
+  </PageSection>
 </Layout>
