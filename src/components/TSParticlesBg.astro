@@ -1,0 +1,70 @@
+<div id="tsparticles" class="tsparticles-layer" aria-hidden="true"></div>
+
+<script type="module">
+  import { tsParticles } from "@tsparticles/engine";
+  import { loadSlim } from "@tsparticles/slim";
+
+  const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  await loadSlim(tsParticles);
+
+  await tsParticles.load({
+    id: "tsparticles",
+    options: {
+      fullScreen: { enable: false },
+      fpsLimit: 60,
+      background: { color: "transparent" },
+      particles: {
+        number: { value: 180, density: { enable: true, area: 1200 } },
+        color: { value: ["#67e8f9", "#38bdf8", "#a78bfa"] },
+        links: {
+          enable: true,
+          distance: 110,
+          color: "#67e8f9",
+          opacity: 0.42,
+          width: 1,
+          triangles: { enable: false }
+        },
+        move: {
+          enable: true,
+          speed: prefersReduced ? 0 : 0.5,
+          direction: "none",
+          random: false,
+          straight: false,
+          outModes: { default: "out" }
+        },
+        opacity: { value: { min: 0.22, max: 0.65 } },
+        size: { value: { min: 0.6, max: 1.8 } },
+      },
+      interactivity: {
+        detectsOn: "window",
+        events: {
+          onHover: { enable: !prefersReduced, mode: "grab" },
+          resize: { enable: true }
+        },
+        modes: {
+          grab: {
+            distance: 160,
+            links: { opacity: 0.55 }
+          }
+        }
+      },
+      detectRetina: true
+    }
+  });
+</script>
+
+<style>
+  .tsparticles-layer {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0.95;
+    mix-blend-mode: screen;
+  }
+
+  .tsparticles-layer :global(canvas) {
+    opacity: 1;
+  }
+</style>

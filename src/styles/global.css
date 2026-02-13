@@ -11,38 +11,12 @@ body {
 
 body {
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-  background: #02030a;
-}
-
-.site-shell::before {
-  content: '';
-  position: fixed;
-  inset: -30%;
-  z-index: 0;
-  background:
-    radial-gradient(circle at 12% 20%, rgba(34, 211, 238, 0.16), transparent 36%),
-    radial-gradient(circle at 85% 18%, rgba(167, 139, 250, 0.2), transparent 38%),
-    radial-gradient(circle at 50% 85%, rgba(56, 189, 248, 0.14), transparent 42%),
-    linear-gradient(140deg, #02030a, #060815, #0c1124, #060815, #02030a);
-  background-size: 140% 140%;
-  animation: drift 28s ease-in-out infinite alternate;
-  filter: saturate(112%);
-}
-
-@keyframes drift {
-  0% {
-    transform: translate3d(-2%, -1%, 0) scale(1.02);
-    background-position: 0% 50%;
-  }
-  100% {
-    transform: translate3d(2%, 1%, 0) scale(1.05);
-    background-position: 100% 50%;
-  }
+  background: #030712;
 }
 
 .glass-card {
   border: 1px solid rgba(255, 255, 255, 0.1);
-  background: linear-gradient(to bottom, rgba(15, 23, 42, 0.5), rgba(2, 6, 23, 0.65));
+  background: linear-gradient(to bottom, rgba(15, 23, 42, 0.46), rgba(2, 6, 23, 0.58));
   backdrop-filter: blur(8px);
 }
 
