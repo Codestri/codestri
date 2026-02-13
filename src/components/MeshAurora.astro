@@ -1,0 +1,76 @@
+<div class="mesh-aurora" aria-hidden="true">
+  <svg class="mesh-aurora__svg" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice">
+    <defs>
+      <linearGradient id="meshStrokeA" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#22d3ee" stop-opacity="0.55" />
+        <stop offset="50%" stop-color="#a78bfa" stop-opacity="0.48" />
+        <stop offset="100%" stop-color="#38bdf8" stop-opacity="0.45" />
+      </linearGradient>
+      <linearGradient id="meshStrokeB" x1="100%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stop-color="#67e8f9" stop-opacity="0.35" />
+        <stop offset="100%" stop-color="#c4b5fd" stop-opacity="0.35" />
+      </linearGradient>
+      <filter id="meshBlur" x="-20%" y="-20%" width="140%" height="140%">
+        <feGaussianBlur stdDeviation="1.8" />
+      </filter>
+    </defs>
+
+    <g class="mesh-layer mesh-layer--a" filter="url(#meshBlur)">
+      <path d="M -100 180 C 220 120, 420 280, 760 210 C 980 165, 1180 95, 1540 170" stroke="url(#meshStrokeA)" stroke-width="2.5" fill="none" />
+      <path d="M -120 310 C 190 260, 420 360, 760 310 C 1050 265, 1240 220, 1560 280" stroke="url(#meshStrokeB)" stroke-width="2" fill="none" />
+      <path d="M -80 430 C 180 400, 420 500, 760 450 C 1040 410, 1220 360, 1540 420" stroke="url(#meshStrokeA)" stroke-width="2" fill="none" />
+    </g>
+
+    <g class="mesh-layer mesh-layer--b" filter="url(#meshBlur)">
+      <path d="M -80 560 C 200 510, 430 640, 760 590 C 1040 545, 1240 500, 1540 560" stroke="url(#meshStrokeB)" stroke-width="2" fill="none" />
+      <path d="M -60 700 C 240 640, 420 790, 760 740 C 1030 700, 1240 650, 1520 710" stroke="url(#meshStrokeA)" stroke-width="2.2" fill="none" />
+    </g>
+  </svg>
+</div>
+
+<style>
+  .mesh-aurora {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    overflow: hidden;
+    opacity: 0.9;
+    mix-blend-mode: screen;
+  }
+
+  .mesh-aurora__svg {
+    width: 120%;
+    height: 120%;
+    transform: translate(-8%, -8%);
+  }
+
+  .mesh-layer {
+    transform-origin: center;
+  }
+
+  .mesh-layer--a {
+    animation: meshFlowA 14s ease-in-out infinite alternate;
+  }
+
+  .mesh-layer--b {
+    animation: meshFlowB 18s ease-in-out infinite alternate;
+  }
+
+  @keyframes meshFlowA {
+    0% { transform: translate3d(-18px, -8px, 0) scale(1.01); }
+    100% { transform: translate3d(24px, 10px, 0) scale(1.04); }
+  }
+
+  @keyframes meshFlowB {
+    0% { transform: translate3d(14px, 14px, 0) scale(1.02); }
+    100% { transform: translate3d(-20px, -10px, 0) scale(1.05); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .mesh-layer--a,
+    .mesh-layer--b {
+      animation: none !important;
+    }
+  }
+</style>

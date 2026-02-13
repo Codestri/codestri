@@ -36,30 +36,15 @@ body {
   inset: -10% -15% -10% -15%;
   z-index: 1;
   pointer-events: none;
-  opacity: 0.65;
-  mix-blend-mode: screen;
+  opacity: 0.28;
   background:
-    repeating-linear-gradient(
-      115deg,
-      rgba(34, 211, 238, 0.08) 0px,
-      rgba(34, 211, 238, 0.08) 2px,
-      transparent 2px,
-      transparent 34px
-    ),
-    repeating-linear-gradient(
-      -125deg,
-      rgba(167, 139, 250, 0.08) 0px,
-      rgba(167, 139, 250, 0.08) 2px,
-      transparent 2px,
-      transparent 36px
-    ),
     linear-gradient(
       105deg,
       transparent 0%,
-      rgba(255, 255, 255, 0.07) 45%,
+      rgba(255, 255, 255, 0.06) 45%,
       transparent 60%
     );
-  filter: blur(10px);
+  filter: blur(12px);
   animation: mesh-wave 12s ease-in-out infinite;
 }
 
