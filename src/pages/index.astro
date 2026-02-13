@@ -1,8 +1,84 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import PremiumHero from '../components/PremiumHero.astro';
+import SectionLead from '../components/SectionLead.astro';
+import PageSection from '../components/PageSection.astro';
+import Checklist from '../components/Checklist.astro';
+import FinalCta from '../components/FinalCta.astro';
+
+const pillars = [
+  'Modern visual redesign that upgrades trust immediately',
+  'Conversion architecture built around real business actions',
+  'Performance-first rebuild with clean, scalable codebase',
+];
+
+const outcomes = [
+  { label: 'Audit to execution model', value: '4-step' },
+  { label: 'Target Lighthouse posture', value: '90+' },
+  { label: 'Client ownership model', value: '100%' },
+];
+
+const process = [
+  'Website Audit: speed, Lighthouse, UX and conversion friction',
+  'Strategic Redesign: modern visual system + clearer messaging',
+  'Rebuild & Install: fast Astro architecture with clean structure',
+  'Ownership Transfer: source code handoff without lock-in',
+];
 ---
 
-<Layout title="Codestri | Build once. Stand out forever.">
-  <PremiumHero />
+<Layout title="Codestri | Redesign & Revenue Infrastructure">
+  <PageSection>
+    <PremiumHero />
+
+    <div class="mt-12">
+      <SectionLead
+      eyebrow="Website Redesign & Revenue Infrastructure"
+      title="Turn an underperforming website into a growth-grade digital asset."
+      description="Codestri redesigns and rebuilds outdated business websites into fast, modern, conversion-focused infrastructure your team fully owns."
+      maxWidth="max-w-4xl"
+    />
+
+    <div class="mt-8 flex flex-wrap gap-3">
+      <a href="/contact" class="rounded-lg bg-cyan-300 px-5 py-3 text-sm font-black uppercase tracking-wide text-slate-950 transition hover:bg-cyan-200">
+        Get a Website Audit
+      </a>
+      <a href="/services" class="rounded-lg border border-white/20 px-5 py-3 text-sm font-semibold text-slate-200 transition hover:bg-white/10">
+        Explore the Method
+      </a>
+    </div>
+
+    <div class="mt-10 grid gap-4 md:grid-cols-3">
+      {outcomes.map((item) => (
+        <article class="glass-card rounded-2xl p-5">
+          <p class="text-xs uppercase tracking-[0.18em] text-slate-400">{item.label}</p>
+          <p class="mt-2 text-3xl font-black text-white">{item.value}</p>
+        </article>
+      ))}
+    </div>
+
+    <div class="mt-10 grid gap-6 md:grid-cols-2">
+      <article class="glass-card rounded-2xl p-6">
+        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">Why Codestri</p>
+        <div class="mt-4">
+          <Checklist items={pillars} />
+        </div>
+      </article>
+
+      <article class="rounded-2xl border border-cyan-300/30 bg-gradient-to-b from-cyan-400/10 to-black/20 p-6">
+        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">Process</p>
+        <div class="mt-4">
+          <Checklist items={process} />
+        </div>
+      </article>
+    </div>
+
+    </div>
+
+    <FinalCta
+      title="No bloated stack. No duct-tape fixes."
+      description="If your site looks dated, loads slowly, or fails to convert, we’ll rebuild it as durable revenue infrastructure."
+      actionLabel="Start the Rebuild"
+      actionHref="/contact"
+    />
+  </PageSection>
 </Layout>

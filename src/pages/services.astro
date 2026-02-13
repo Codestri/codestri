@@ -1,29 +1,44 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import SectionLead from '../components/SectionLead.astro';
+import PageSection from '../components/PageSection.astro';
+
+const services = [
+  {
+    title: '01 · Website Audit',
+    body: 'Lighthouse performance, speed diagnostics, UX friction mapping, and conversion critique.',
+  },
+  {
+    title: '02 · Strategic Redesign',
+    body: 'Modern visual direction, stronger layout hierarchy, CTA architecture, and messaging clarity.',
+  },
+  {
+    title: '03 · Rebuild & Install',
+    body: 'Astro-based clean build with mobile-first responsiveness and SEO-ready structure.',
+  },
+  {
+    title: '04 · Ownership Transfer',
+    body: 'Source code handoff, maintainable structure, and no recurring lock-in dependency.',
+  },
+];
 ---
 
 <Layout title="Services | Codestri">
-  <section class="py-14">
-    <p class="text-sm font-bold uppercase tracking-[0.2em] text-violet-300">Services</p>
-    <h1 class="mt-3 text-5xl font-black">Focused services for modern web growth.</h1>
+  <PageSection>
+    <SectionLead
+      eyebrow="Service Architecture"
+      title="A redesign system built to produce business results, not pretty dead pages."
+      description="Every engagement follows a disciplined four-step model so quality, speed, and ownership stay predictable."
+      maxWidth="max-w-4xl"
+    />
 
     <div class="mt-10 grid gap-5 md:grid-cols-2">
-      <article class="rounded-2xl border border-violet-300/20 bg-slate-900/45 p-6">
-        <h2 class="text-2xl font-extrabold">Landing Page Rebuilds</h2>
-        <p class="mt-3 text-slate-300">Transform outdated pages into modern conversion engines with clean UI and stronger CTA flow.</p>
-      </article>
-      <article class="rounded-2xl border border-violet-300/20 bg-slate-900/45 p-6">
-        <h2 class="text-2xl font-extrabold">Performance Optimization</h2>
-        <p class="mt-3 text-slate-300">Improve load speed, Core Web Vitals, and responsiveness to reduce bounce and improve trust.</p>
-      </article>
-      <article class="rounded-2xl border border-violet-300/20 bg-slate-900/45 p-6">
-        <h2 class="text-2xl font-extrabold">Content & UX Refinement</h2>
-        <p class="mt-3 text-slate-300">Restructure page content and visual hierarchy so visitors understand and act quickly.</p>
-      </article>
-      <article class="rounded-2xl border border-violet-300/20 bg-slate-900/45 p-6">
-        <h2 class="text-2xl font-extrabold">Ongoing Iteration Support</h2>
-        <p class="mt-3 text-slate-300">Incremental improvements based on behavior, feedback, and measurable business goals.</p>
-      </article>
+      {services.map((service) => (
+        <article class="glass-card rounded-2xl p-6">
+          <h2 class="text-xl font-black text-white">{service.title}</h2>
+          <p class="mt-3 text-sm text-slate-300">{service.body}</p>
+        </article>
+      ))}
     </div>
-  </section>
+  </PageSection>
 </Layout>

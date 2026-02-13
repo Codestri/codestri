@@ -11,9 +11,11 @@ const links = [
 ---
 
 <nav class="mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-5">
-  <a href="/" class="text-xl font-black tracking-tight text-white">Codestri</a>
+  <a href="/" class="text-lg font-black tracking-[0.08em] text-white md:text-xl">
+    CODESTRI
+  </a>
 
-  <ul class="flex items-center gap-2 rounded-full border border-white/10 bg-black/20 p-1 backdrop-blur-sm">
+  <ul class="flex items-center gap-2 rounded-full border border-white/10 bg-black/30 p-1 backdrop-blur-md">
     {links.map((link) => {
       const isActive = currentPath === link.href;
       return (
@@ -21,9 +23,9 @@ const links = [
           <a
             href={link.href}
             class:list={[
-              'rounded-full px-4 py-2 text-sm font-bold transition',
+              'rounded-full px-4 py-2 text-xs font-bold uppercase tracking-[0.08em] transition md:text-sm',
               isActive
-                ? 'bg-violet-400 text-black'
+                ? 'bg-cyan-300 text-slate-950'
                 : 'text-slate-300 hover:bg-white/10 hover:text-white',
             ]}
             aria-current={isActive ? 'page' : undefined}
