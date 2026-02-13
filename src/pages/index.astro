@@ -1,8 +1,77 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import PremiumHero from '../components/PremiumHero.astro';
+import SectionLead from '../components/SectionLead.astro';
+import PageSection from '../components/PageSection.astro';
+import Checklist from '../components/Checklist.astro';
+import FinalCta from '../components/FinalCta.astro';
+
+const differentiators = [
+  'Modern trust-building design that upgrades first impression immediately',
+  'Conversion-focused messaging hierarchy and CTA structure',
+  'High-performance, SEO-ready rebuild with clean architecture',
+];
+
+const process = [
+  'Website Audit (performance, UX friction, conversion critique)',
+  'Strategic Redesign (visual modernization + structure)',
+  'Rebuild & Install (clean Astro implementation)',
+  'Ownership Transfer (source code + clear handoff)',
+];
+
+const noThanks = [
+  'No bloated stacks',
+  'No duct-tape fixes',
+  'No lock-in dependency traps',
+  'Built once. Built right.',
+];
 ---
 
-<Layout title="Codestri | Build once. Stand out forever.">
-  <PremiumHero />
+<Layout title="Codestri | Website Redesign & Revenue Infrastructure">
+  <PageSection>
+    <SectionLead
+      eyebrow="Website Redesign & Revenue Infrastructure"
+      title="We redesign outdated websites into fast, modern, high-conversion digital assets."
+      description="Codestri rebuilds underperforming business websites for performance, clarity, and long-term ownership."
+      maxWidth="max-w-4xl"
+    />
+
+    <div class="mt-8 flex flex-wrap gap-3">
+      <a href="/contact" class="rounded-lg bg-violet-400 px-5 py-3 text-sm font-bold text-black transition hover:bg-violet-300">
+        Get a Website Audit
+      </a>
+      <a href="/services" class="rounded-lg border border-white/20 px-5 py-3 text-sm font-semibold text-slate-200 transition hover:bg-white/10">
+        See Service Model
+      </a>
+    </div>
+
+    <div class="mt-10 grid gap-6 md:grid-cols-2">
+      <article class="rounded-2xl border border-white/10 bg-black/20 p-6">
+        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">Why Codestri</p>
+        <div class="mt-4">
+          <Checklist items={differentiators} />
+        </div>
+      </article>
+
+      <article class="rounded-2xl border border-violet-300/25 bg-gradient-to-b from-violet-500/10 to-black/20 p-6">
+        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">Operating Standard</p>
+        <div class="mt-4">
+          <Checklist items={noThanks} />
+        </div>
+      </article>
+    </div>
+
+    <div class="mt-10 rounded-2xl border border-white/10 bg-black/20 p-6 md:p-8">
+      <p class="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">Offer Structure</p>
+      <div class="mt-4">
+        <Checklist items={process} />
+      </div>
+    </div>
+
+    <FinalCta
+      title="Need your website to perform like real infrastructure?"
+      description="We’ll identify where your current site is leaking trust, speed, and conversion — then rebuild it the right way."
+      actionLabel="Start with an Audit"
+      actionHref="/contact"
+    />
+  </PageSection>
 </Layout>
