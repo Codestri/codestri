@@ -5,6 +5,11 @@
   import { loadSlim } from "@tsparticles/slim";
 
   const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const params = new URLSearchParams(window.location.search);
+  const debugBg = params.get("bgdebug") === "1";
+
+  const host = document.getElementById("tsparticles");
+  if (debugBg && host) host.classList.add("debug-bg");
 
   await loadSlim(tsParticles);
 
@@ -15,26 +20,26 @@
       fpsLimit: 60,
       background: { color: "transparent" },
       particles: {
-        number: { value: 180, density: { enable: true, area: 1200 } },
+        number: { value: debugBg ? 260 : 180, density: { enable: true, area: 1200 } },
         color: { value: ["#67e8f9", "#38bdf8", "#a78bfa"] },
         links: {
           enable: true,
-          distance: 110,
+          distance: debugBg ? 130 : 110,
           color: "#67e8f9",
-          opacity: 0.42,
-          width: 1,
+          opacity: debugBg ? 0.85 : 0.42,
+          width: debugBg ? 1.6 : 1,
           triangles: { enable: false }
         },
         move: {
           enable: true,
-          speed: prefersReduced ? 0 : 0.5,
+          speed: prefersReduced ? 0 : (debugBg ? 0.9 : 0.5),
           direction: "none",
           random: false,
           straight: false,
           outModes: { default: "out" }
         },
-        opacity: { value: { min: 0.22, max: 0.65 } },
-        size: { value: { min: 0.6, max: 1.8 } },
+        opacity: { value: { min: debugBg ? 0.5 : 0.22, max: debugBg ? 1 : 0.65 } },
+        size: { value: { min: debugBg ? 1 : 0.6, max: debugBg ? 2.8 : 1.8 } },
       },
       interactivity: {
         detectsOn: "window",
@@ -44,14 +49,18 @@
         },
         modes: {
           grab: {
-            distance: 160,
-            links: { opacity: 0.55 }
+            distance: debugBg ? 220 : 160,
+            links: { opacity: debugBg ? 1 : 0.55 }
           }
         }
       },
       detectRetina: true
     }
   });
+
+  if (debugBg) {
+    console.info("[Codestri BG Debug] Active. Remove ?bgdebug=1 to return to normal mode.");
+  }
 </script>
 
 <style>
@@ -66,5 +75,13 @@
 
   .tsparticles-layer :global(canvas) {
     opacity: 1;
+  }
+
+  .tsparticles-layer.debug-bg {
+    opacity: 1;
+    mix-blend-mode: normal;
+    background: rgba(255, 0, 200, 0.12);
+    outline: 2px dashed rgba(255, 80, 220, 0.8);
+    outline-offset: -2px;
   }
 </style>
