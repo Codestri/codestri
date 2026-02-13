@@ -10,30 +10,57 @@ const links = [
 ];
 ---
 
-<nav class="mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-5">
-  <a href="/" class="text-lg font-black tracking-[0.08em] text-white md:text-xl">
-    CODESTRI
-  </a>
+<nav class="mx-auto w-full max-w-6xl px-4 py-4 md:px-6 md:py-5">
+  <div class="flex items-center justify-between gap-3">
+    <a href="/" class="text-base font-black tracking-[0.08em] text-white md:text-xl">
+      CODESTRI
+    </a>
 
-  <ul class="flex items-center gap-2 rounded-full border border-white/10 bg-black/30 p-1 backdrop-blur-md">
-    {links.map((link) => {
-      const isActive = currentPath === link.href;
-      return (
-        <li>
-          <a
-            href={link.href}
-            class:list={[
-              'rounded-full px-4 py-2 text-xs font-bold uppercase tracking-[0.08em] transition md:text-sm',
-              isActive
-                ? 'bg-cyan-300 text-slate-950'
-                : 'text-slate-300 hover:bg-white/10 hover:text-white',
-            ]}
-            aria-current={isActive ? 'page' : undefined}
-          >
-            {link.label}
-          </a>
-        </li>
-      );
-    })}
-  </ul>
+    <ul class="hidden items-center gap-2 rounded-full border border-white/10 bg-black/30 p-1 backdrop-blur-md md:flex">
+      {links.map((link) => {
+        const isActive = currentPath === link.href;
+        return (
+          <li>
+            <a
+              href={link.href}
+              class:list={[
+                'rounded-full px-4 py-2 text-xs font-bold uppercase tracking-[0.08em] transition md:text-sm',
+                isActive
+                  ? 'bg-cyan-300 text-slate-950'
+                  : 'text-slate-300 hover:bg-white/10 hover:text-white',
+              ]}
+              aria-current={isActive ? 'page' : undefined}
+            >
+              {link.label}
+            </a>
+          </li>
+        );
+      })}
+    </ul>
+
+    <details class="group relative md:hidden">
+      <summary class="list-none cursor-pointer rounded-lg border border-white/15 bg-black/40 px-3 py-2 text-xs font-bold uppercase tracking-[0.08em] text-slate-200">
+        Menu
+      </summary>
+      <div class="absolute right-0 z-20 mt-2 w-48 rounded-xl border border-white/15 bg-slate-950/95 p-2 shadow-xl backdrop-blur-md">
+        {links.map((link) => {
+          const isActive = currentPath === link.href;
+          return (
+            <a
+              href={link.href}
+              class:list={[
+                'block rounded-lg px-3 py-2 text-xs font-bold uppercase tracking-[0.08em] transition',
+                isActive
+                  ? 'bg-cyan-300 text-slate-950'
+                  : 'text-slate-200 hover:bg-white/10',
+              ]}
+              aria-current={isActive ? 'page' : undefined}
+            >
+              {link.label}
+            </a>
+          );
+        })}
+      </div>
+    </details>
+  </div>
 </nav>
