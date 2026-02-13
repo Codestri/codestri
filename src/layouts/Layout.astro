@@ -2,7 +2,7 @@
 import '../styles/global.css';
 import Nav from '../components/Nav.astro';
 
-const { title = 'Codestri | Websites That Convert' } = Astro.props;
+const { title = 'Codestri | Website Redesign & Revenue Infrastructure' } = Astro.props;
 const currentPath = Astro.url.pathname;
 ---
 
@@ -21,7 +21,9 @@ const currentPath = Astro.url.pathname;
         <main class="mx-auto w-full max-w-6xl flex-1 px-6 pb-16 pt-8">
           <slot />
         </main>
-        <footer class="pb-6 text-center text-xs text-slate-500">Built with Codestri</footer>
+        <footer class="pb-8 text-center text-xs text-slate-500">
+          Codestri · Built once. Built right.
+        </footer>
       </div>
     </div>
   </body>

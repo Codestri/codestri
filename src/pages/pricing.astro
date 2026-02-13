@@ -8,16 +8,16 @@ import InfoAccordion from '../components/InfoAccordion.astro';
 
 const pricingFaq = [
   {
-    question: 'Can we start small and expand later?',
-    answer: 'Yes. Most teams start with a focused scope, then add pages or optimization cycles once early results are clear.',
+    question: 'Can we start with an audit first?',
+    answer: 'Yes. Many teams begin with an audit sprint, then execute redesign and rebuild in staged phases.',
   },
   {
-    question: 'Do these tiers lock us into one format?',
-    answer: 'No. They are planning anchors, not rigid boxes. Scope is adjusted to your constraints and outcomes.',
+    question: 'Are these fixed templates or flexible engagements?',
+    answer: 'Flexible. These are baseline package anchors and can be adapted to your actual business priorities.',
   },
   {
-    question: 'Is ongoing support available after launch?',
-    answer: 'Absolutely. Iteration support can be added for content refinement, performance tuning, and UX improvements.',
+    question: 'Do we fully own the final website?',
+    answer: 'Yes. Codestri’s model is long-term ownership transfer with clear structure and no lock-in dependency.',
   },
 ];
 ---
@@ -25,9 +25,9 @@ const pricingFaq = [
 <Layout title="Pricing | Codestri">
   <PageSection>
     <SectionLead
-      eyebrow="Pricing"
-      title="Flexible paths for different build stages."
-      description="Start lean, ship confidently, and scale with a premium front-end foundation built for long-term clarity."
+      eyebrow="Investment"
+      title="Choose the execution depth your current website actually needs."
+      description="From focused audit sprints to full revenue-infrastructure rebuilds."
     />
 
     <div class="mt-10">
@@ -37,9 +37,9 @@ const pricingFaq = [
     <InfoAccordion title="Pricing notes" items={pricingFaq} />
 
     <FinalCta
-      title="Not sure which tier fits best?"
-      description="Share your current stage and goals — we’ll recommend the most practical option."
-      actionLabel="Talk Through Options"
+      title="Want a recommendation before choosing a tier?"
+      description="Send us your current site and goals. We’ll point you to the most practical path."
+      actionLabel="Request Recommendation"
     />
   </PageSection>
 </Layout>

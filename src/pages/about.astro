@@ -3,18 +3,18 @@ import Layout from '../layouts/Layout.astro';
 import SectionLead from '../components/SectionLead.astro';
 import PageSection from '../components/PageSection.astro';
 
-const pillars = [
+const principles = [
   {
-    title: 'Design',
-    body: 'Modern, trust-building UI that positions businesses professionally and clearly.',
+    title: 'Precision over noise',
+    body: 'We prioritize clarity, measurable outcomes, and clean execution over hype or vanity design.',
   },
   {
-    title: 'Conversion Thinking',
-    body: 'Intentional structure, stronger CTA flow, and messaging hierarchy that drives action.',
+    title: 'Systems over heroics',
+    body: 'The website should be maintainable, scalable, and easy to hand off — not dependent on fragile hacks.',
   },
   {
-    title: 'Technical Performance',
-    body: 'Fast, clean, SEO-ready architecture built for long-term maintainability and ownership.',
+    title: 'Client ownership always',
+    body: 'You receive full source ownership and a structure your team can actually understand.',
   },
 ];
 ---
@@ -23,25 +23,23 @@ const pillars = [
   <PageSection>
     <SectionLead
       eyebrow="About Codestri"
-      title="We don’t just spruce websites up. We rebuild them as revenue infrastructure."
-      description="Codestri modernizes outdated websites into high-performance digital assets that clients fully own."
+      title="Built for founders who want real website performance, not surface-level polish."
+      description="Codestri exists to modernize underperforming sites into conversion-focused infrastructure with long-term ownership and technical integrity."
       maxWidth="max-w-4xl"
     />
 
     <div class="mt-10 grid gap-5 md:grid-cols-3">
-      {
-        pillars.map((pillar) => (
-          <article class="rounded-xl border border-white/10 bg-black/25 p-5">
-            <h2 class="text-xl font-extrabold">{pillar.title}</h2>
-            <p class="mt-2 text-slate-300">{pillar.body}</p>
-          </article>
-        ))
-      }
+      {principles.map((item) => (
+        <article class="glass-card rounded-xl p-5">
+          <h2 class="text-lg font-extrabold text-white">{item.title}</h2>
+          <p class="mt-3 text-sm text-slate-300">{item.body}</p>
+        </article>
+      ))}
     </div>
 
     <div class="mt-8 rounded-2xl border border-violet-300/25 bg-gradient-to-b from-violet-500/10 to-black/20 p-6">
       <p class="text-sm text-slate-200">
-        No bloated stacks. No dependency traps. No duct-tape fixes. <span class="font-semibold text-white">Built once. Built right.</span>
+        We combine design clarity, conversion strategy, and technical performance in one delivery model — then transfer ownership cleanly.
       </p>
     </div>
   </PageSection>

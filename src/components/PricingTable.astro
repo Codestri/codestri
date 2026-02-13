@@ -1,35 +1,35 @@
 ---
 const tiers = [
   {
-    name: 'Free Scout',
-    price: '$0',
-    cadence: '/ forever',
-    blurb: 'Perfect for testing ideas before spending money.',
-    features: ['1 page starter template', 'Basic style customization', 'Community-level guidance'],
-    cta: 'Start Free',
-    accent: 'border-white/15',
-    button: 'border border-white/20 text-white hover:bg-white/10',
-  },
-  {
-    name: 'Builder',
-    price: '$100',
+    name: 'Audit Sprint',
+    price: '$250',
     cadence: '/ project',
-    blurb: 'For founders who need speed, clarity, and launch momentum.',
-    features: ['Up to 5 polished sections', 'Conversion-focused structure', 'Delivery-ready Astro code'],
-    cta: 'Choose Builder',
-    accent: 'border-violet-300/40 shadow-[0_0_30px_rgba(139,92,246,0.2)]',
-    button: 'bg-violet-400 text-black hover:bg-violet-300',
-    badge: 'Most Popular',
+    blurb: 'For businesses that need clear diagnostics and a practical redesign roadmap.',
+    features: ['Lighthouse + speed report', 'Conversion friction mapping', 'Actionable redesign blueprint'],
+    cta: 'Start Audit',
+    accent: 'border-cyan-300/30',
+    button: 'border border-cyan-300/40 text-cyan-100 hover:bg-cyan-300/10',
   },
   {
-    name: 'Scale Ops',
-    price: '$1000',
+    name: 'Redesign Build',
+    price: '$1,500',
+    cadence: '/ site',
+    blurb: 'End-to-end redesign + rebuild for businesses replacing underperforming websites.',
+    features: ['Strategic redesign system', 'Astro rebuild + optimization', 'Ownership handoff documentation'],
+    cta: 'Choose Redesign',
+    accent: 'border-violet-300/40 shadow-[0_0_30px_rgba(167,139,250,0.18)]',
+    button: 'bg-violet-300 text-slate-950 hover:bg-violet-200',
+    badge: 'Core Offer',
+  },
+  {
+    name: 'Revenue Ops',
+    price: '$3,500',
     cadence: '/ sprint',
-    blurb: 'For teams replacing legacy sites with growth-ready systems.',
-    features: ['Multi-page architecture', 'Performance + UX tuning', 'Priority iteration support'],
-    cta: 'Go Scale',
-    accent: 'border-indigo-300/30',
-    button: 'border border-indigo-300/40 text-indigo-100 hover:bg-indigo-300/10',
+    blurb: 'For teams needing multi-page architecture, conversion iteration, and higher velocity execution.',
+    features: ['Advanced page architecture', 'Conversion and UX iterations', 'Priority implementation support'],
+    cta: 'Scale With Ops',
+    accent: 'border-sky-300/30',
+    button: 'border border-sky-300/40 text-sky-100 hover:bg-sky-300/10',
   },
 ];
 ---
@@ -37,11 +37,11 @@ const tiers = [
 <div class="grid gap-5 md:grid-cols-3">
   {tiers.map((tier) => (
     <article class:list={[
-      'relative rounded-2xl border bg-black/30 p-6 backdrop-blur-sm',
+      'relative rounded-2xl border bg-slate-950/45 p-6 backdrop-blur-sm',
       tier.accent,
     ]}>
       {tier.badge && (
-        <span class="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-violet-400 px-3 py-1 text-xs font-black uppercase tracking-wide text-black">
+        <span class="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-violet-300 px-3 py-1 text-xs font-black uppercase tracking-wide text-slate-950">
           {tier.badge}
         </span>
       )}
