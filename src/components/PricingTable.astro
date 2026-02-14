@@ -7,8 +7,8 @@ const tiers = [
     blurb: 'For businesses that need clear diagnostics and a practical redesign roadmap.',
     features: ['Lighthouse + speed report', 'Conversion friction mapping', 'Actionable redesign blueprint'],
     cta: 'Start Audit',
-    accent: 'border-cyan-300/30',
-    button: 'border border-cyan-300/40 text-cyan-100 hover:bg-cyan-300/10',
+    accent: 'border-red-400/35',
+    button: 'border border-red-400/45 text-red-100 hover:bg-red-500/10',
   },
   {
     name: 'Redesign Build',
@@ -17,8 +17,8 @@ const tiers = [
     blurb: 'End-to-end redesign + rebuild for businesses replacing underperforming websites.',
     features: ['Strategic redesign system', 'Astro rebuild + optimization', 'Ownership handoff documentation'],
     cta: 'Choose Redesign',
-    accent: 'border-violet-300/40 shadow-[0_0_30px_rgba(167,139,250,0.18)]',
-    button: 'bg-violet-300 text-slate-950 hover:bg-violet-200',
+    accent: 'border-red-400/40 shadow-[0_0_30px_rgba(167,139,250,0.18)]',
+    button: 'bg-red-500 text-slate-950 hover:bg-red-400',
     badge: 'Core Offer',
   },
   {
@@ -28,8 +28,8 @@ const tiers = [
     blurb: 'For teams needing multi-page architecture, conversion iteration, and higher velocity execution.',
     features: ['Advanced page architecture', 'Conversion and UX iterations', 'Priority implementation support'],
     cta: 'Scale With Ops',
-    accent: 'border-sky-300/30',
-    button: 'border border-sky-300/40 text-sky-100 hover:bg-sky-300/10',
+    accent: 'border-red-300/35',
+    button: 'border border-red-300/45 text-red-100 hover:bg-red-300/15',
   },
 ];
 ---
@@ -41,7 +41,7 @@ const tiers = [
       tier.accent,
     ]}>
       {tier.badge && (
-        <span class="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-violet-300 px-3 py-1 text-xs font-black uppercase tracking-wide text-slate-950">
+        <span class="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-red-500 px-3 py-1 text-xs font-black uppercase tracking-wide text-slate-950">
           {tier.badge}
         </span>
       )}

@@ -10,7 +10,7 @@ const { eyebrow, title, description, maxWidth = 'max-w-3xl' } = Astro.props as P
 ---
 
 <header class={`space-y-3 ${maxWidth}`}>
-  {eyebrow && <p class="text-xs font-semibold uppercase tracking-[0.22em] text-violet-300/90">{eyebrow}</p>}
+  {eyebrow && <p class="text-xs font-semibold uppercase tracking-[0.22em] text-red-300/90">{eyebrow}</p>}
   <h1 class="text-3xl font-bold tracking-tight text-white md:text-4xl">{title}</h1>
   {description && <p class="text-base text-slate-300 md:text-lg">{description}</p>}
 </header>
