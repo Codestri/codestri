@@ -28,5 +28,41 @@ const currentPath = Astro.url.pathname;
         </footer>
       </div>
     </div>
+
+    <script is:inline>
+      (function () {
+        try {
+          var params = new URLSearchParams(window.location.search);
+          if (params.get('bgdebug') !== '1') return;
+
+          var badge = document.createElement('div');
+          badge.textContent = 'BG DEBUG ACTIVE';
+          badge.style.position = 'fixed';
+          badge.style.top = '10px';
+          badge.style.right = '10px';
+          badge.style.zIndex = '99999';
+          badge.style.padding = '8px 10px';
+          badge.style.borderRadius = '8px';
+          badge.style.fontSize = '12px';
+          badge.style.fontWeight = '700';
+          badge.style.letterSpacing = '0.06em';
+          badge.style.background = 'rgba(255, 0, 200, 0.85)';
+          badge.style.color = '#fff';
+          badge.style.border = '1px solid rgba(255,255,255,0.8)';
+          document.body.appendChild(badge);
+
+          var overlay = document.createElement('div');
+          overlay.style.position = 'fixed';
+          overlay.style.inset = '0';
+          overlay.style.zIndex = '2';
+          overlay.style.pointerEvents = 'none';
+          overlay.style.outline = '3px dashed rgba(255, 80, 220, 0.9)';
+          overlay.style.background = 'rgba(255, 0, 200, 0.08)';
+          document.body.appendChild(overlay);
+        } catch (e) {
+          console.warn('BG debug marker failed', e);
+        }
+      })();
+    </script>
   </body>
 </html>
