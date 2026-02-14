@@ -1,5 +1,5 @@
 <section
-  class="hero-reactive relative flex min-h-[56vh] items-center justify-center overflow-hidden rounded-3xl border border-cyan-200/20 bg-slate-950/25 px-4 py-12 text-center backdrop-blur-[2px] md:min-h-[70vh] md:px-6 md:py-20"
+  class="hero-reactive relative flex min-h-[56vh] items-center justify-center overflow-hidden rounded-3xl border border-red-200/25 bg-slate-950/25 px-4 py-12 text-center backdrop-blur-[2px] md:min-h-[70vh] md:px-6 md:py-20"
   data-hero
 >
   <div class="pointer-events-none absolute inset-0" aria-hidden="true">
@@ -15,7 +15,7 @@
     <div class="mt-8 flex justify-center md:mt-10">
       <a
         href="/services"
-        class="magnetic-cta inline-flex min-w-[220px] items-center justify-center rounded-xl border border-violet-300/35 bg-violet-400/90 px-7 py-3 text-sm font-extrabold tracking-wide text-black shadow-[0_8px_30px_rgba(139,92,246,0.24)] transition duration-300 hover:bg-violet-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-300/70"
+        class="magnetic-cta inline-flex min-w-[220px] items-center justify-center rounded-xl border border-red-400/40 bg-red-500/90 px-7 py-3 text-sm font-extrabold tracking-wide text-black shadow-[0_8px_30px_rgba(239,68,68,0.24)] transition duration-300 hover:bg-red-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-400/70"
         data-magnetic
       >
         View Examples
@@ -69,14 +69,14 @@
           bx = Math.max(-10, Math.min(10, x * strength));
           by = Math.max(-8, Math.min(8, y * strength));
           button.style.transform = `translate3d(${bx.toFixed(1)}px, ${by.toFixed(1)}px, 0)`;
-          button.style.boxShadow = '0 10px 34px rgba(139,92,246,0.34)';
+          button.style.boxShadow = '0 10px 34px rgba(239,68,68,0.34)';
         });
 
         button.addEventListener('mouseleave', () => {
           bx = 0;
           by = 0;
           button.style.transform = 'translate3d(0, 0, 0)';
-          button.style.boxShadow = '0 8px 30px rgba(139,92,246,0.24)';
+          button.style.boxShadow = '0 8px 30px rgba(239,68,68,0.24)';
         });
       }
 
@@ -95,8 +95,8 @@
     background:
       radial-gradient(
         520px circle at var(--mx) var(--my),
-        rgba(167, 139, 250, 0.2),
-        rgba(99, 102, 241, 0.12) 34%,
+        rgba(248, 113, 113, 0.22),
+        rgba(239, 68, 68, 0.14) 34%,
         transparent 62%
       ),
       linear-gradient(140deg, rgba(17, 24, 39, 0.62), rgba(6, 8, 20, 0.85));
